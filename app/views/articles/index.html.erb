@@ -1,0 +1,18 @@
+<%# <form>
+<label>Enter User Name<label>
+<input type="text" id="username" placeholder="Username" >
+<label>Enter password</label>
+<input type="password" id="password">
+<button type="submit"> submit</button>
+</form> %>
+<%# <%= form_with url: "/create", method: :post do |form|%>
+Form 1
+<%= form_with url: "/login", method: :post do |form| %>
+<%= form.label :query, "Enter name" %><br>
+  <%= form.text_field :query %><br>
+  <%= form.label :pass, "Enter Password"%><br>
+  <%=form.password_field :pass%><br>
+  <%= form.submit "Search" %>
+<%end%>
+
+
