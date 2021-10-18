@@ -1,1 +1,9 @@
-<%=@article.inspect%>
+<% if @empty %>
+  <%=<h1>@empty</h1>%>
+<% else %>
+<%=@article.inspect%><br>
+<%= link_to "Edit page", edit_article_path(@article)%><br>
+<%= link_to "Destroy", article_path(@article),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %>
+<% end %>

@@ -4,7 +4,14 @@ class ArticlesController < ApplicationController
   end
   
   def show
-    @article = Article.find(params[:id])
+    byebug
+    if @article = Article.find(params[:id])
+      
+    else
+      @empty = "ID not present"
+      
+    end
+    
     #@article = Article.find_by(title: params[:title])
   end
   
@@ -21,10 +28,28 @@ class ArticlesController < ApplicationController
       render :new
     end
   end
+  def edit
+
+    @article = Article.find(params[:id])
+
+  end
+  def update
+    @article = Article.find(params[:id])
+    if @article.update(article_params)
+      redirect_to article_path
+      else
+        render :edit
+    end
+  end
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+    redirect_to root_path
+  end
 
   private
 
   def article_params
-    params.require(:article).permit(:title, :body)
+    params.require(:article).permit(:title,:body,:email,:email_confirmation)
   end
 end
