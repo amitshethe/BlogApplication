@@ -4,13 +4,10 @@ class ArticlesController < ApplicationController
   end
   
   def show
-    byebug
-    if @article = Article.find(params[:id])
+    
+     @article = Article.find(params[:id])
       
-    else
-      @empty = "ID not present"
-      
-    end
+  
     
     #@article = Article.find_by(title: params[:title])
   end
