@@ -1,7 +1,27 @@
 
-<%=@article.inspect%><br>
+<%=@article.title%><br>
+<%=@article.body%><br>
 <%= link_to "Edit page", edit_article_path(@article)%><br>
-<%= link_to "Destroy", article_path(@article),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" } %>
+<%= link_to "Destroy", article_path(@article),method: :delete,data: { confirm: "Are you sure?" } %><br>
 
+<h2>Comments</h2>
+<% @article.comments.each do |comment| %>
+  <p>
+    <strong>Commenter:</strong>
+    <%= comment.commenter %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+<% end %>
+
+<h1>Add a Comments</h1><br>
+<%=form_with model: [@article,@article.comments.build ] do |form|%>
+<%=form.label :commenter %> <br>
+<%=form.text_field :commenter%> <br>
+<%=form.label :body%><br>
+<%=form.text_area :body%><br>
+<%=form.submit%>
+<%end%>
