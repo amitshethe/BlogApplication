@@ -17,8 +17,6 @@
 
 <%= link_to "New Article", new_article_path %>
 <%= link_to "Edit page", edit_article_path(@article)%>
-
-
 <%@article.each do |i|%>
 <a href='/show/<%=i.id%>'><br>
 <%=i.title%><br>
@@ -29,13 +27,10 @@
 <h1>Articles</h1>
 
 <ul>
-  <% @article.each do |article| %>
-  
+  <% @article.each do |article| %>  
     <li>
-      <%= link_to article.title, article %>
-      
-    </li>
-    
+      <%= link_to article.title, article %>      
+    </li>    
   <% end %>
 </ul>
 
